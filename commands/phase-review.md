@@ -39,7 +39,7 @@ Phase [N] 전수 검증을 실행하라.
 결과를 .planning/phases/[phase]/[phase번호]-VALIDATION.md에 저장하라.
 모드: phase_validation
 " \
-  --systemPrompt "$(cat ~/.claude/agents/tester-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/tester/CLAUDE.md)" \
   --allowedTools "View,Bash,Write" \
   --max-turns 30
 ```

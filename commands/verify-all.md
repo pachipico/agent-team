@@ -24,7 +24,7 @@ claude -p "
 검증: 빌드, 테스트, 아키텍처, 성공 기준, git status
 결과를 표준 출력으로 보고하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/tester-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/tester/CLAUDE.md)" \
   --allowedTools "View,Bash" \
   --max-turns 30
 ```

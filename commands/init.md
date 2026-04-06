@@ -58,7 +58,7 @@ claude -p "
 .planning/PROJECT.md를 참고하여 프로젝트를 분석하고
 .planning/PROJECT-INFO.md를 생성하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/researcher-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/researcher/CLAUDE.md)" \
   --allowedTools "View,Bash,Write" \
   --max-turns 30
 ```

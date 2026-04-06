@@ -1,3 +1,8 @@
+---
+name: Worker
+description: PLAN의 task를 구현하는 서브에이전트
+---
+
 # Worker Agent — CLAUDE.md
 
 > 서브에이전트로 spawn되어 PLAN의 task를 구현한다.

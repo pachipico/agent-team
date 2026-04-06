@@ -1,3 +1,8 @@
+---
+name: Planner
+description: 페이즈의 PLAN 파일을 작성하는 서브에이전트
+---
+
 # Planner Agent — CLAUDE.md
 
 > 서브에이전트로 spawn되어 페이즈의 PLAN을 작성한다.

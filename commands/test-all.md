@@ -17,7 +17,7 @@ claude -p "
 3. 패키지별 결과, 실패 상세 분석
 결과를 표준 출력으로 보고하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/tester-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/tester/CLAUDE.md)" \
   --allowedTools "View,Bash" \
   --max-turns 20
 ```

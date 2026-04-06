@@ -1,3 +1,8 @@
+---
+name: Tester
+description: PLAN/페이즈 완료를 검증하고 SUMMARY/VALIDATION을 생성하는 서브에이전트
+---
+
 # Tester Agent — CLAUDE.md
 
 > 서브에이전트로 spawn되어 PLAN/페이즈 완료를 검증하고 SUMMARY/VALIDATION을 생성한다.

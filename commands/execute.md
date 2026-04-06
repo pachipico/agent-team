@@ -16,10 +16,13 @@ STATE.md 없으면 → "/init을 먼저 실행하세요." 출력 후 종료
 
 > 📋 [Orchestrator] STATE.md 확인 중...
 
+STATE.md의 `current_plan`을 읽은 뒤, **반드시 파일시스템에서** 해당 plan의 SUMMARY 파일 존재 여부를 확인한다.
+
 | 상태 | 분기 |
 |------|------|
 | plan 없음 (null/TBD) | → Step 2: Planner spawn |
 | plan 있고 SUMMARY 없음 | → Step 3: Worker spawn |
+| plan 있고 SUMMARY 있음 (STATE.md가 뒤처진 경우) | → STATE.md를 다음 plan으로 업데이트 후 Step 3 |
 | 페이즈 내 모든 plan SUMMARY 완료 | → "/phase-review를 실행하세요." 출력 후 종료 |
 | 모든 페이즈 완료 | → "/verify-all을 실행하세요." 출력 후 종료 |
 
@@ -45,7 +48,7 @@ Phase [N]의 Plan [M]을 작성하라.
 - .planning/phases/[phase]/[이전]-SUMMARY.md (있으면)
 결과를 .planning/phases/[phase]/[번호]-PLAN.md에 저장하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/planner-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/planner/CLAUDE.md)" \
   --allowedTools "View,Bash,Write" \
   --max-turns 30
 ```
@@ -70,6 +73,15 @@ STATE.md 업데이트: `status: planning`, `current_plan: [M]`
 
 ## Step 3: Worker spawn
 
+### ⚠️ Worker spawn 전 STATE.md 업데이트 (필수)
+
+Worker spawn 전에 반드시 STATE.md를 아래 내용으로 먼저 저장한다:
+- `current_plan`: 실행할 plan 번호
+- `status`: executing
+- `last_updated`: 현재 시각
+
+이후 Worker를 spawn한다.
+
 > 📋 [Orchestrator] → Worker spawn 중...
 
 ```bash
@@ -80,7 +92,7 @@ claude -p "
 ⚠️ git add, git commit, git push 절대 실행하지 마라.
 완료 후 생성/수정 파일 목록과 권장 커밋 메시지를 마지막에 출력하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/worker-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/worker/CLAUDE.md)" \
   --allowedTools "View,Bash,Write,Edit" \
   --max-turns 50
 ```
@@ -128,7 +140,7 @@ claude -p "
 - .planning/phases/[phase]/[번호]-PLAN.md
 결과를 .planning/phases/[phase]/[번호]-SUMMARY.md에 저장하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/tester-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/tester/CLAUDE.md)" \
   --allowedTools "View,Bash,Write" \
   --max-turns 30
 ```

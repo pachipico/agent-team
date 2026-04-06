@@ -34,10 +34,10 @@ claude -p "[프롬프트]" \
 
 ### 4. 에이전트 CLAUDE.md 경로
 ```
-~/.claude/agents/researcher-CLAUDE.md
-~/.claude/agents/planner-CLAUDE.md
-~/.claude/agents/worker-CLAUDE.md
-~/.claude/agents/tester-CLAUDE.md
+~/.claude/agents/researcher/CLAUDE.md
+~/.claude/agents/planner/CLAUDE.md
+~/.claude/agents/worker/CLAUDE.md
+~/.claude/agents/tester/CLAUDE.md
 ```
 
 ### 5. 컨텍스트 최적화
@@ -77,7 +77,7 @@ claude -p "
 프로젝트 루트: $(pwd)
 분석 후 .planning/PROJECT-INFO.md를 생성하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/researcher-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/researcher/CLAUDE.md)" \
   --allowedTools "View,Bash,Write" \
   --max-turns 30
 ```
@@ -95,7 +95,7 @@ Phase [N]의 Plan [M]을 작성하라.
 - .planning/phases/[phase]/[이전]-SUMMARY.md (있으면)
 결과를 .planning/phases/[phase]/[번호]-PLAN.md에 저장하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/planner-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/planner/CLAUDE.md)" \
   --allowedTools "View,Bash,Write" \
   --max-turns 30
 ```
@@ -109,7 +109,7 @@ claude -p "
 ⚠️ git add, git commit, git push 절대 실행하지 마라.
 완료 후 생성/수정한 파일 목록과 권장 커밋 메시지를 마지막에 출력하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/worker-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/worker/CLAUDE.md)" \
   --allowedTools "View,Bash,Write,Edit" \
   --max-turns 50
 ```
@@ -122,7 +122,7 @@ claude -p "
 - .planning/phases/[phase]/[번호]-PLAN.md
 결과를 .planning/phases/[phase]/[번호]-SUMMARY.md에 저장하라.
 " \
-  --systemPrompt "$(cat ~/.claude/agents/tester-CLAUDE.md)" \
+  --systemPrompt "$(cat ~/.claude/agents/tester/CLAUDE.md)" \
   --allowedTools "View,Bash,Write" \
   --max-turns 30
 ```
@@ -135,11 +135,15 @@ claude -p "
 업데이트 시 파일 전체를 다시 쓴다.
 
 ### 업데이트 시점
-| 시점 | 범위 |
-|------|------|
-| plan 완료 시 | frontmatter + 현재 위치 + 진행 현황 + 다음 작업 |
-| phase 전환 시 | **전체 다시 쓰기** |
-| 작업 중단 시 | frontmatter + stopped_at |
+| 시점 | 범위 | 주의 |
+|------|------|------|
+| 다음 plan Worker spawn 직전 | `current_plan` +1, `status: executing` | **spawn보다 반드시 먼저** |
+| Tester PASSED 확인 후 | `completed_plans` +1, `current_plan` +1, `status: planning` | SUMMARY 파일 생성 후 |
+| phase 전환 시 | **전체 다시 쓰기** | - |
+| 작업 중단 시 | `stopped_at`, `status` | - |
+
+> ⚠️ STATE.md의 `current_plan`은 항상 **파일시스템 실제 상태**와 동기화되어야 한다.
+> `/execute` 실행 시 STATE.md의 current_plan에 SUMMARY가 존재하면, spawn 전에 current_plan을 +1로 업데이트한다.
 
 ### 기존 STATE.md가 있을 때
 1. 먼저 기존 STATE.md의 **섹션 제목 언어**를 확인한다.
