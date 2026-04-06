@@ -54,6 +54,13 @@ Phase [N] 전수 검증을 실행하라.
 → /execute로 Phase [N+1]을 시작하세요.
 ```
 STATE.md 전체 다시 쓰기. 기존 섹션 제목 언어 보존.
+섹션별 갱신 내용:
+- frontmatter: `completed_phases +1`, `stopped_at: Phase {XX} ({name}) PASSED — Phase {XX+1} 시작 대기`, `status: planning`
+- `Session Continuity > Last session`: 현재 ISO timestamp
+- `Session Continuity > Stopped at`: `Phase {XX} ({name}) PASSED — Phase {XX+1} 시작 대기`
+- `Pending Todos`: 완료된 phase 관련 항목 삭제, 다음 phase Todo 추가
+- `Blockers/Concerns`: 해결된 항목 삭제
+- `Performance Metrics > By Phase`: 완료된 phase 행 추가
 
 **FAILED:**
 ```

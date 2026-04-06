@@ -138,8 +138,8 @@ claude -p "
 | 시점 | 범위 | 주의 |
 |------|------|------|
 | 다음 plan Worker spawn 직전 | `current_plan` +1, `status: executing` | **spawn보다 반드시 먼저** |
-| Tester PASSED 확인 후 | `completed_plans` +1, `current_plan` +1, `status: planning` | SUMMARY 파일 생성 후 |
-| phase 전환 시 | **전체 다시 쓰기** | - |
+| Tester PASSED 확인 후 | `completed_plans` +1, `current_plan` +1, `status: planning`<br>`Session Continuity > Last session` (현재 ISO timestamp)<br>`Session Continuity > Stopped at` (`Completed {phase-name} plan {XX}`) | SUMMARY 파일 생성 후 |
+| phase 전환 시 | **전체 다시 쓰기** — frontmatter + Session Continuity + Pending Todos + Blockers/Concerns + Performance Metrics 모두 포함 | - |
 | 작업 중단 시 | `stopped_at`, `status` | - |
 
 > ⚠️ STATE.md의 `current_plan`은 항상 **파일시스템 실제 상태**와 동기화되어야 한다.

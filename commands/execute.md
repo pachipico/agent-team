@@ -157,7 +157,10 @@ SUMMARY 파일을 읽고 보고:
 
 → /execute로 다음 plan을 진행하세요.
 ```
-STATE.md: `completed_plans_in_phase +1`, `current_plan` 다음, `status: planning`
+STATE.md:
+- `completed_plans_in_phase +1`, `current_plan` 다음, `status: planning`
+- `Session Continuity > Last session`: 현재 ISO timestamp
+- `Session Continuity > Stopped at`: `Completed {phase-name} plan {XX}` (예: `Completed 03-social-layer plan 06`)
 
 **FAILED:**
 ```
@@ -179,6 +182,8 @@ STATE.md: `status: executing`
 □ 본문 "현재 위치" 갱신 (frontmatter와 동기화)
 □ "현재 페이즈 진행 현황" 테이블 갱신
 □ "다음 작업" 갱신
+□ Session Continuity > Last session 갱신 (현재 ISO timestamp)
+□ Session Continuity > Stopped at 갱신 (Completed {phase-name} plan {XX})
 □ 기존 섹션 제목 언어 보존
 □ 200줄 이내 확인
 ```
