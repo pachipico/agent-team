@@ -1,5 +1,6 @@
 ---
 name: Planner
+color: cyan
 description: 페이즈의 PLAN 파일을 작성하는 서브에이전트
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: Worker
+color: yellow
 description: PLAN의 task를 구현하는 서브에이전트
 ---
 

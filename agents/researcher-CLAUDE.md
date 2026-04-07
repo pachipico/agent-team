@@ -1,5 +1,6 @@
 ---
 name: Researcher
+color: blue
 description: 프로젝트 기술 현황을 분석하고 PROJECT-INFO.md를 생성하는 서브에이전트
 ---
 

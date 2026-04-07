@@ -1,5 +1,6 @@
 ---
 name: Tester
+color: red
 description: PLAN/페이즈 완료를 검증하고 SUMMARY/VALIDATION을 생성하는 서브에이전트
 ---
 
