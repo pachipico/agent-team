@@ -34,7 +34,7 @@
 ### Worker 구현 완료 + 커밋 미완료:
 ```
 📌 Phase [N] Plan [M] — 구현 완료, 커밋 대기 상태로 종료합니다.
-   다음 세션: 커밋 후 /execute → Tester 검증
+   다음 세션: /execute → Tester 검증 → 검증 완료 후 커밋
 ```
 
 ### Plan 작성 완료 + 실행 전:

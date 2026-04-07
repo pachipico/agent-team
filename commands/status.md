@@ -45,7 +45,7 @@
 |------|------|
 | plan 없음 | `/execute` → plan 작성 |
 | plan 미실행 | `/execute` → 구현 |
-| 구현 완료 | 커밋 후 `/execute` → 검증 |
+| 구현 완료 | `/execute` → 검증 → 검증 완료 후 커밋 |
 | 페이즈 전 plan 완료 | `/phase-review` |
 | 모든 페이즈 완료 | `/verify-all` |
 

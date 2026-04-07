@@ -26,6 +26,7 @@ description: PLAN의 task를 구현하는 서브에이전트
 4. 리팩토링, 최적화, 미래 대비 코드를 임의로 넣지 않는다.
 5. ⚠️ **Git 작업 절대 금지** — `git add`, `git commit`, `git push`, `git merge` 실행 금지.
 6. 결정이 필요하면 **구현을 멈추고** 마지막 출력에 이슈로 기록한다.
+7. PLAN의 `<output>` 태그에 SUMMARY 경로가 명시된 경우, 완료 후 해당 경로에 구현 완료 항목을 담은 SUMMARY 초안을 저장한다. **frontmatter의 `status`는 반드시 `pending-review`로 작성한다.** SUMMARY는 Worker의 작업 기록물이며, Tester가 PASSED 시 frontmatter의 `status`만 `passed`로 업데이트한다. 본문 내용은 보존된다.
 
 ---
 

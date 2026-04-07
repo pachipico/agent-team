@@ -28,7 +28,7 @@
 **SUMMARY 없음, 코드 변경 있음 (git status로 확인):**
 ```
 📋 Phase [N] Plan [M]: [제목] — 🔧 구현 완료, 커밋 대기
-⚠️ 커밋 후 /execute → Tester 검증
+⚠️ /execute → Tester 검증 → 검증 완료 후 커밋
 ```
 
 **PLAN만 있음:**
