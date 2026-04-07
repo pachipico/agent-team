@@ -56,7 +56,7 @@ Phase [N] 전수 검증을 실행하라.
 STATE.md 전체 다시 쓰기. 기존 섹션 제목 언어 보존.
 섹션별 갱신 내용:
 - frontmatter: `completed_phases +1`, `stopped_at: Phase {XX} ({name}) PASSED — Phase {XX+1} 시작 대기`, `status: planning`
-- `Session Continuity > Last session`: 현재 ISO timestamp
+- `Session Continuity > Last session`: 현재 ISO timestamp (Bash tool로 `date -u +"%Y-%m-%dT%H:%M:%SZ"` 실행 결과 사용 — 날짜 추측 후 T00:00:00Z 채우기 금지)
 - `Session Continuity > Stopped at`: `Phase {XX} ({name}) PASSED — Phase {XX+1} 시작 대기`
 - `Pending Todos`: 완료된 phase 관련 항목 삭제, 다음 phase Todo 추가
 - `Blockers/Concerns`: 해결된 항목 삭제

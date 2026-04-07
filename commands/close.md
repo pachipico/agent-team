@@ -63,7 +63,7 @@ STATE.md에 아래 내용을 반영한다:
 
 ```
 stopped_at: [현재 정확한 상태 설명]
-last_updated: [현재 날짜시간]
+last_updated: [현재 날짜시간 — Bash tool로 `date -u +"%Y-%m-%dT%H:%M:%SZ"` 실행 결과 사용]
 ```
 
 기존 섹션 제목 언어 보존. frontmatter와 본문 동기화.
